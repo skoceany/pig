@@ -50,10 +50,16 @@ const handleUpload = async (file) => {
   
   try {
     const response = await diagnosisApi.diagnose(formData)
-    diagnosisResult.value = response.data.data
+    if (response.data.success) {
+      diagnosisResult.value = response.data.data
+    } else {
+      alert('诊断失败：' + (response.data.message || '未知错误'))
+      diagnosisResult.value = null
+    }
   } catch (error) {
     console.error('诊断失败:', error)
-    alert('诊断失败，请重试')
+    const errMsg = error.response?.data?.message || error.message || '请重试'
+    alert('诊断错误：' + errMsg)
   } finally {
     isLoading.value = false
   }

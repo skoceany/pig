@@ -1,12 +1,10 @@
 import axios from 'axios'
 
-const API_BASE_URL = '/api'
+const API_BASE_URL = 'http://localhost:8001/api'
 
 export const diagnosisApi = {
   async diagnose(formData) {
-    return axios.post(`${API_BASE_URL}/diagnosis`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    })
+    return axios.post(`${API_BASE_URL}/diagnosis`, formData)
   },
   async getDiseaseInfo(diseaseName) {
     return axios.get(`${API_BASE_URL}/disease/${encodeURIComponent(diseaseName)}`)
