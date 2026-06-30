@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.diagnosis import router as diagnosis_router
 from app.api.disease import router as disease_router
 from app.api.history import router as history_router
+from app.api.chat import router as chat_router
 from app.config.settings import settings
 
 app = FastAPI(title=settings.app_name, version=settings.app_version)
@@ -20,6 +21,7 @@ app.add_middleware(
 app.include_router(diagnosis_router, prefix=settings.api_prefix)
 app.include_router(disease_router, prefix=settings.api_prefix)
 app.include_router(history_router, prefix=settings.api_prefix)
+app.include_router(chat_router, prefix=settings.api_prefix)
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):

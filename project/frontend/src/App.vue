@@ -33,6 +33,7 @@
 <script setup>
 const navItems = [
   { name: '诊断', path: '/' },
+  { name: '智能对话', path: '/chat' },
   { name: '历史记录', path: '/history' },
   { name: '疾病知识库', path: '/knowledge' },
   { name: '关于', path: '/about' }

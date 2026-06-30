@@ -5,7 +5,7 @@ class Settings(BaseSettings):
     app_version: str = "1.0.0"
     database_url: str = "sqlite+aiosqlite:///./pig_disease.db"
     upload_dir: str = "./uploads"
-    model_dir: str = "./models"
+    model_path: str = "./models"
     confidence_threshold: float = 0.7
     max_image_size: int = 5 * 1024 * 1024
     api_prefix: str = "/api"
@@ -15,8 +15,10 @@ class Settings(BaseSettings):
         '猪圆环病毒病', '猪传染性胃肠炎', '猪伪狂犬病', '猪链球菌病',
         '副猪嗜血杆菌病', '猪丹毒', '猪传染性胸膜肺炎', '猪附红细胞体病'
     ]
+    llm_api_key: str = ""
+    llm_api_base: str = "https://api.openai.com/v1"
+    llm_model: str = "gpt-3.5-turbo"
 
-    class Config:
-        env_file = ".env"
+    model_config = {"protected_namespaces": (), "env_file": ".env"}
 
 settings = Settings()

@@ -19,5 +19,11 @@ export const diagnosisApi = {
   },
   async deleteHistory(recordId) {
     return axios.delete(`${API_BASE_URL}/history/${recordId}`)
+  },
+  async chat(message) {
+    return axios.post(`${API_BASE_URL}/chat`, { message })
+  },
+  async chatWithHistory(messages) {
+    return axios.post(`${API_BASE_URL}/chat/history`, messages)
   }
 }
